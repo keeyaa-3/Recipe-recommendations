@@ -27,7 +27,7 @@ st.set_page_config(page_title="Recipe Recommender", layout="centered")
 st.title("Smart Recipe Recommender")
 st.write("Enter ingredients you have or prefer, and get recipe ideas instantly!")
 user_input = st.text_input("Ingredients (comma-separated):", placeholder="e.g. tomato, onion, cheese")
-if user_input:
+if user_input.strip():
   with st.spinner("Finding delicious recipes..."):
     results = get_recommendations(user_input, df, tfidf, tfidf_matrix)
 st.success(f"Top {len(results)} recipe recommendations:")
