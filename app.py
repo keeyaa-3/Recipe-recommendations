@@ -5,8 +5,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Loading and preparing data!!! (reading dataset from Kaggle)
 def load_data():
   df=pd.read_csv('Cleaned_Indian_Food_Dataset.csv')
-df.dropna(subset=['TranslatedRecipeName','TranslatedIngredients', 'TranslatedInstructions'],inplace=True)
-df.reset_index(drop=True, inplace=True)
+  df.dropna(subset=['TranslatedRecipeName','TranslatedIngredients', 'TranslatedInstructions'],inplace=True)
+  df.reset_index(drop=True, inplace=True)
 return df
 df = load_data()
 # Creating TF-IDF Model
