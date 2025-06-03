@@ -27,7 +27,7 @@ return recipes_df.iloc[top_indices][['TranslatedRecipeName', 'TranslatedIngredie
 st.set_page_config(page_title="Recipe Recommender", layout="centered")
 st.title("Smart Recipe Recommender")
 st.write("Enter ingredients you have or prefer, and get recipe ideas instantly!")
-user_input = st.text_input("Ingredients (comma-separated):", placeholder="e.g. tomato, onion,
+user_input = st.text_input("Ingredients (comma-separated):", "placeholder="e.g. tomato, onion,
 cheese")
 if user_input:
 with st.spinner("Finding delicious recipes..."):
