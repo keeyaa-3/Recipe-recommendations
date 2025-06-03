@@ -33,8 +33,8 @@ if user_input:
     results = get_recommendations(user_input, df, tfidf, tfidf_matrix)
 st.success(f"Top {len(results)} recipe recommendations:")
 for i, (index, row) in enumerate(results.iterrows()):
-st.markdown(f"### {i+1}. {row['TranslatedRecipeName']}")
-st.markdown(f"**Ingredients:** {row['TranslatedIngredients']}")
-st.markdown(f"**Instructions:** {row['TranslatedInstructions'][:1000000]}{'...' if
-len(row['TranslatedInstructions']) > 1000000 else ''}")
-st.markdown("---")
+  st.markdown(f"### {i+1}. {row['TranslatedRecipeName']}")
+  st.markdown(f"**Ingredients:** {row['TranslatedIngredients']}")
+  st.markdown(f"**Instructions:** {row['TranslatedInstructions'][:1000000]}{'...' if
+                                                                            len(row['TranslatedInstructions']) > 1000000 else ''}")
+  st.markdown("---")
