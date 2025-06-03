@@ -13,14 +13,14 @@ df = load_data()
 def create_model(df):
   tfidf = TfidfVectorizer(stop_words='english')
   tfidf_matrix = tfidf.fit_transform(df['TranslatedIngredients'])
-return tfidf, tfidf_matrix
+  return tfidf, tfidf_matrix
 tfidf, tfidf_matrix = create_model(df)
 # Getting Recipe recommendations
 def get_recommendations(user_input, recipes_df, tfidf_model, matrix):
   query_vec = tfidf_model.transform([user_input])
   similarity_scores = cosine_similarity(query_vec, matrix).flatten()
   top_indices = similarity_scores.argsort()[-5:][::-1]
-return recipes_df.iloc[top_indices][['TranslatedRecipeName', 'TranslatedIngredients',
+  return recipes_df.iloc[top_indices][['TranslatedRecipeName', 'TranslatedIngredients',
 'TranslatedInstructions']]
 # Streamlit Dashboard UI
 st.set_page_config(page_title="Recipe Recommender", layout="centered")
