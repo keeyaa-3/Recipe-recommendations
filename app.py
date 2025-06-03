@@ -12,7 +12,7 @@ return df
 df = load_data()
 # Creating TF-IDF Model
 def create_model(df):
-tfidf = TfidfVectorizer(stop_words='english')
+  tfidf = TfidfVectorizer(stop_words='english')
 tfidf_matrix = tfidf.fit_transform(df['TranslatedIngredients'])
 return tfidf, tfidf_matrix
 tfidf, tfidf_matrix = create_model(df)
