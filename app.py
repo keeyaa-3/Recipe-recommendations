@@ -7,7 +7,7 @@ def load_data():
   df=pd.read_csv('Cleaned_Indian_Food_Dataset.csv')
   df=df.dropna(subset=['TranslatedRecipeName','TranslatedIngredients', 'TranslatedInstructions'],inplace=True)
   df=df.reset_index(drop=True, inplace=True)
-return df
+  return df
 df = load_data()
 # Creating TF-IDF Model
 def create_model(df):
