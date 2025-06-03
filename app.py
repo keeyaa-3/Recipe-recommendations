@@ -27,13 +27,14 @@ st.set_page_config(page_title="Recipe Recommender", layout="centered")
 st.title("Smart Recipe Recommender")
 st.write("Enter ingredients you have or prefer, and get recipe ideas instantly!")
 user_input = st.text_input("Ingredients (comma-separated):", placeholder="e.g. tomato, onion, cheese")
-if user_input.strip():
+if user_input:
   with st.spinner("Finding delicious recipes..."):
     results = get_recommendations(user_input, df, tfidf, tfidf_matrix)
-st.success(f"Top {len(results)} recipe recommendations:")
-for i, (index, row) in enumerate(results.iterrows()):
-  st.markdown(f"### {i+1}. {row['TranslatedRecipeName']}")
-  st.markdown(f"**Ingredients:** {row['TranslatedIngredients']}")
-  st.markdown(f"**Instructions:** {row['TranslatedInstructions'][:1000000]}{'...' if
-                                                                            len(row['TranslatedInstructions']) > 1000000 else ''}")
+    if results:
+      st.success(f"Top {len(results)} recipe recommendations:")
+      for i, (index, row) in enumerate(results.iterrows()):
+        st.markdown(f"### {i+1}. {row['TranslatedRecipeName']}")
+        st.markdown(f"**Ingredients:** {row['TranslatedIngredients']}")
+        st.markdown(f"**Instructions:** {row['TranslatedInstructions'][:1000000]}{'...' if 
+                                                                                  len(row['TranslatedInstructions']) > 1000000 else ''}")
   st.markdown("---")
